@@ -1,6 +1,17 @@
 import React from 'react';
 
-import { Container, BackgroundImage, ContainerInput, Data } from './styles';
+import {
+  Container,
+  BackgroundImage,
+  ContainerContent,
+  Title,
+  ContainerInput,
+  Data,
+  Options,
+  LabelOptions,
+  Select,
+  Option,
+} from './styles';
 
 import { Input } from '../../components/Input';
 
@@ -11,14 +22,27 @@ export default function Calculator() {
     <Container>
       <BackgroundImage src={Background} />
 
-      <ContainerInput>
-        <Data>
-          <Input title="Data início" placeholder="DD/MM/AAAA" />
-          <Input title="Data término" placeholder="DD/MM/AAAA" />
-          <Input title="Último salário" placeholder="0.00" />
-          <Input title="Número de dependentes" placeholder="0" />
-        </Data>
-      </ContainerInput>
+      <ContainerContent>
+        <Title>Cálculo de Rescisão do Contrato de Trabalho</Title>
+
+        <ContainerInput>
+          <Data>
+            <Input title="Data início" placeholder="DD/MM/AAAA" />
+            <Input title="Data término" placeholder="DD/MM/AAAA" />
+            <Input title="Último salário" placeholder="0.00" />
+            <Input title="Número de dependentes" placeholder="0" />
+
+            <Options>
+              <LabelOptions>Motivo do término de contrato</LabelOptions>
+              <Select>
+                <Option>Pedido de demissão</Option>
+                <Option>Pedido de demissão</Option>
+                <Option>Pedido de demissão</Option>
+              </Select>
+            </Options>
+          </Data>
+        </ContainerInput>
+      </ContainerContent>
     </Container>
   );
 }
