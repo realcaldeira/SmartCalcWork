@@ -14,6 +14,7 @@ import {
 } from './styles';
 
 import { Input } from '../../components/Input';
+import { Radio } from '../../components/Radio';
 
 import Background from '../../assets/background-calculator.jpg';
 
@@ -40,6 +41,8 @@ export default function Calculator() {
                 <Option>Pedido de demissão</Option>
               </Select>
             </Options>
+            <Radio />
+            <Radio />
           </Data>
         </ContainerInput>
       </ContainerContent>
