@@ -3,6 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.div`
   flex: 1;
 `;
+export const LottieContainer = styled.div`
+  position: absolute;
+
+  top: 18.65136298421808vh;
+  right: 9.469153515064562vh;
+`;
 
 export const BackgroundImage = styled.img`
   position: absolute;
@@ -17,7 +23,7 @@ export const BtnStartNow = styled.button`
   width: 20%;
 
   bottom: 21px;
-  right: 28px;
+  right: 125px;
   background-color: #f12711;
 
   border-radius: 10px;
