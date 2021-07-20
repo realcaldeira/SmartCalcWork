@@ -3,8 +3,10 @@ import Lottie from 'react-lottie';
 
 import {
   Container,
+  ContainerMobile,
   LottieContainer,
   BackgroundImage,
+  Title,
   BtnStartNow,
   TitleButton,
 } from './styles';
@@ -28,15 +30,17 @@ export default function Home() {
 
   return (
     <Container>
-      <BackgroundImage src={Background} />
+      <ContainerMobile>
+        <BackgroundImage src={Background} />
+        <Title>SmartCalcWork</Title>
+        <LottieContainer>
+          <Lottie options={defaultOptions} height={400} width={400} />
+        </LottieContainer>
 
-      <LottieContainer>
-        <Lottie options={defaultOptions} height={400} width={400} />
-      </LottieContainer>
-
-      <BtnStartNow onClick={handleStartNow}>
-        <TitleButton>Start now</TitleButton>
-      </BtnStartNow>
+        <BtnStartNow onClick={handleStartNow}>
+          <TitleButton>Start now</TitleButton>
+        </BtnStartNow>
+      </ContainerMobile>
     </Container>
   );
 }

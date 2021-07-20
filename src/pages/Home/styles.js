@@ -2,12 +2,19 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   flex: 1;
-`;
-export const LottieContainer = styled.div`
-  position: absolute;
 
-  top: 18.65136298421808vh;
-  right: 9.469153515064562vh;
+  @media (max-width: 700px) {
+    align-items: center;
+    justify-items: center;
+  }
+`;
+export const ContainerMobile = styled.div`
+  @media (max-width: 1000px) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #6a16e1;
+  }
 `;
 
 export const BackgroundImage = styled.img`
@@ -15,6 +22,47 @@ export const BackgroundImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  @media (max-width: 1000px) {
+    width: 0;
+    height: 0;
+    background-color: #6a16e1;
+  }
+`;
+
+export const Title = styled.h1`
+  position: absolute;
+
+  color: #fff;
+  font-family: 'Roboto Condensed', sans-serif;
+
+  top: 10vh;
+  right: 25vh;
+  @media (max-width: 1000px) {
+    right: 50vh;
+  }
+  @media (max-width: 700px) {
+    right: 35vh;
+  }
+  @media (max-width: 480px) {
+    right: 20vh;
+  }
+`;
+
+export const LottieContainer = styled.div`
+  position: fixed;
+
+  top: 18vh;
+  right: 9.5vh;
+
+  @media (max-width: 1000px) {
+    right: 35vh;
+  }
+  @media (max-width: 700px) {
+    right: 18vh;
+  }
+  @media (max-width: 480px) {
+    right: 4vh;
+  }
 `;
 
 export const BtnStartNow = styled.button`
@@ -22,8 +70,8 @@ export const BtnStartNow = styled.button`
 
   width: 20%;
 
-  bottom: 21px;
-  right: 125px;
+  bottom: 3vh;
+  right: 18vh;
   background-color: #f12711;
 
   border-radius: 10px;
@@ -46,11 +94,25 @@ export const BtnStartNow = styled.button`
     -ms-transition: all ease-in 0.3s;
     -o-transition: all ease-in 0.3s;
   }
+  @media (max-width: 1000px) {
+    right: 43vh;
+    width: 40%;
+  }
+  @media (max-width: 700px) {
+    right: 30vh;
+    width: 40%;
+  }
+  @media (max-width: 480px) {
+    right: 20vh;
+    width: 40%;
+  }
 `;
 
 export const TitleButton = styled.h1`
   color: white;
   font-size: 3vh;
+
+  font-family: 'Roboto Condensed', sans-serif;
 `;
 
 export const Arrow = styled.img`
