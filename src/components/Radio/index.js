@@ -2,10 +2,10 @@ import React from 'react';
 
 import { OptionsRadio, Title, FériasVencidas, Radios } from './styles';
 
-export function Radio() {
+export function Radio({ title }) {
   return (
     <OptionsRadio>
-      <Title>Você possui férias vencidas?</Title>
+      <Title>{title}</Title>
       <FériasVencidas>
         <Radios type="radio" value="option1" checked={true} />
         <Title>NÃO</Title>
