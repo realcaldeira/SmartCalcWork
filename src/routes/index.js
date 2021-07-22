@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Calculator from '../pages/Calculator';
 import Result from '../pages/Result';
 import ResultDatails from '../pages/ResultDatails';
+import Error from '../pages/Error';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -14,7 +15,7 @@ export default function Routes() {
       <Route path="/calculator" component={Calculator} />
       <Route path="/result" component={Result} />
       <Route path="/resultDatails" component={ResultDatails} />
-      <Route component={() => <div>Page 404!</div>} />
+      <Route component={() => <Error />} />
     </Switch>
   );
 }

@@ -33,4 +33,5 @@ export const ContainerTitles = styled.div`
 
 export const Title = styled.h3`
   margin-right: 40%;
+  color: #4a00e0;
 `;
