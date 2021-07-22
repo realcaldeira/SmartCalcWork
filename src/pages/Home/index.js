@@ -14,19 +14,19 @@ import {
 import Background from '../../assets/background-home.jpg';
 import animationData from '../../lottie/finance.json';
 
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice',
+  },
+};
+
 export default function Home() {
   function handleStartNow() {
     alert('Teste');
   }
-
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
 
   return (
     <Container>
@@ -37,7 +37,7 @@ export default function Home() {
           <Lottie options={defaultOptions} height={400} width={400} />
         </LottieContainer>
 
-        <BtnStartNow onClick={handleStartNow}>
+        <BtnStartNow to="/calculator">
           <TitleButton>Start now</TitleButton>
         </BtnStartNow>
       </ContainerMobile>

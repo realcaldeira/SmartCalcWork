@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   flex: 1;
@@ -62,17 +63,20 @@ export const LabelOptions = styled.h3`
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-export const ContainerButton = styled.button`
+export const ContainerButton = styled(Link)`
   position: fixed;
   left: 73vh;
 
   width: 25vh;
   height: 7vh;
 
+  text-align: center;
+
   background-color: #f12711;
 
-  justify-content: center;
-  align-items: center;
+  text-decoration: none;
+
+  padding-bottom: 15px;
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
@@ -99,7 +103,7 @@ export const ContainerButton = styled.button`
 
 export const TitleButton = styled.h3`
   font-weight: bold;
-
+  padding-bottom: 15px;
   color: #ffffff;
 `;
 

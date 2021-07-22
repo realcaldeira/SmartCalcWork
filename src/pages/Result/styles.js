@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   flex: 1;
@@ -40,15 +41,19 @@ export const ResultTotal = styled.h2`
   top: 40%;
 `;
 
-export const ButtonDetails = styled.button`
+export const ButtonDetails = styled(Link)`
   position: fixed;
   top: 70%;
   left: 25.5%;
 
   width: 40vh;
   height: 8%;
+  padding-bottom: 15px;
 
   background-color: #f12711;
+
+  text-align: center;
+  text-decoration: none;
 
   justify-content: center;
   align-items: center;

@@ -37,7 +37,7 @@ export default function Result() {
           O valor líquido (depois dos descontos) da sua rescisão é de:
         </Title>
         <ResultTotal>R$ 592,76</ResultTotal>
-        <ButtonDetails>
+        <ButtonDetails to="/resultDatails">
           <ButtonTitle>Ver mais detalhes</ButtonTitle>
         </ButtonDetails>
         <ContainerLottie>

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 export const Container = styled.div`
   flex: 1;
 
@@ -65,11 +67,14 @@ export const LottieContainer = styled.div`
   }
 `;
 
-export const BtnStartNow = styled.button`
+export const BtnStartNow = styled(Link)`
   position: fixed;
 
   width: 20%;
 
+  text-decoration: none;
+
+  text-align: center;
   bottom: 3vh;
   right: 18vh;
   background-color: #f12711;

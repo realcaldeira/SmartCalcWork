@@ -57,7 +57,7 @@ export default function Calculator() {
             <Radio title="Você possui férias vencidas?" />
             <Radio title="Você cumpriu aviso prévio?" />
 
-            <ContainerButton>
+            <ContainerButton to="/result">
               <TitleButton>Calcular</TitleButton>
             </ContainerButton>
           </Data>
