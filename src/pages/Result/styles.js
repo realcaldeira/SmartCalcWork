@@ -48,7 +48,6 @@ export const ButtonDetails = styled(Link)`
 
   width: 40vh;
   height: 8%;
-  padding-bottom: 15px;
 
   background-color: #f12711;
 
@@ -83,7 +82,7 @@ export const ButtonDetails = styled(Link)`
 
 export const ButtonTitle = styled.h2`
   font-weight: bold;
-
+  margin: 10px;
   color: #ffffff;
 `;
 

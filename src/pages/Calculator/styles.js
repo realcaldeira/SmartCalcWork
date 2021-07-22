@@ -76,8 +76,6 @@ export const ContainerButton = styled(Link)`
 
   text-decoration: none;
 
-  padding-bottom: 15px;
-
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 
@@ -103,7 +101,7 @@ export const ContainerButton = styled(Link)`
 
 export const TitleButton = styled.h3`
   font-weight: bold;
-  padding-bottom: 15px;
+  margin: 10px;
   color: #ffffff;
 `;
 
