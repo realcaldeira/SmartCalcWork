@@ -46,7 +46,7 @@ export default function Calculator() {
     },
   };
 
-  const Select = React.forwardRef(({ onChange, onBlur, name, label }, ref) => (
+  const Select = React.forwardRef(({ onChange, onBlur, name }, ref) => (
     <>
       <select name={name} ref={ref} onChange={onChange} onBlur={onBlur}>
         <option value="20">Pedido de demissão</option>
@@ -99,12 +99,20 @@ export default function Calculator() {
               <LabelOptions>Motivo do término de contrato</LabelOptions>
               <Select {...register('terminoContrato')} />
             </Options>
-            <Radio title="Você possui férias vencidas?" />
-            <Radio title="Você cumpriu aviso prévio?" />
+            <Radio
+              title="Você possui férias vencidas?"
+              {...register('feriasVen', { required: true })}
+            />
+            {errors.feriasVen && <Error>Você selecionar uma opção.</Error>}
+            <Radio
+              title="Você cumpriu aviso prévio?"
+              {...register('avisoPrev', { required: true })}
+            />
+            {errors.avisoPrev && <Error>Você selecionar uma opção.</Error>}
 
-            <Input type="submit" />
+            <Input type="submit"></Input>
 
-            <ContainerButton type="submit">
+            <ContainerButton to="/result">
               <TitleButton>Calcular</TitleButton>
             </ContainerButton>
           </Data>
