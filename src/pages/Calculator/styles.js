@@ -121,3 +121,9 @@ export const LottieContainer = styled.div`
     right: 4vh;
   }
 `;
+
+export const Error = styled.p`
+  color: red;
+
+  margin: -2% 0;
+`;
