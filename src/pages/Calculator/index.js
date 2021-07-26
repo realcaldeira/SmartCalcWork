@@ -28,7 +28,7 @@ import { useStateMachine } from 'little-state-machine';
 
 import { updateData } from '../../routes';
 
-export default function Calculator() {
+export default function Calculator(props) {
   const { actions } = useStateMachine({ updateData });
 
   const {
@@ -46,6 +46,8 @@ export default function Calculator() {
       feriasVen: data.feriasVen,
       avisoPrev: data.avisoPrev,
     });
+
+    props.history.push('./result');
   }
 
   const defaultOptions = {
