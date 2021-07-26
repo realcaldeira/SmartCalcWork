@@ -16,6 +16,9 @@ import {
   TitleButton,
   LottieContainer,
   Error,
+  InputButton,
+  Option,
+  Selection,
 } from './styles';
 
 import calcAnimation from '../../lottie/calc.json';
@@ -62,11 +65,11 @@ export default function Calculator(props) {
 
   const Select = React.forwardRef(({ onChange, onBlur, name }, ref) => (
     <>
-      <select name={name} ref={ref} onChange={onChange} onBlur={onBlur}>
-        <option value="pedido">Pedido de demissão</option>
-        <option value="dispensaS">Dispensa sem justa causa</option>
-        <option value="dispensaS">Dispensa cem justa causa</option>
-      </select>
+      <Selection name={name} ref={ref} onChange={onChange} onBlur={onBlur}>
+        <Option value="pedido">Pedido de demissão</Option>
+        <Option value="dispensaS">Dispensa sem justa causa</Option>
+        <Option value="dispensaS">Dispensa cem justa causa</Option>
+      </Selection>
     </>
   ));
   return (
@@ -127,7 +130,7 @@ export default function Calculator(props) {
             />
             {errors.avisoPrev && <Error>Você selecionar uma opção.</Error>}
 
-            <Input type="submit" to="/result"></Input>
+            <InputButton type="submit" to="/result" value="Calcular" />
 
             <ContainerButton to="/result">
               <TitleButton>Calcular</TitleButton>

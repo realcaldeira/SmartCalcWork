@@ -52,8 +52,22 @@ export const Select = styled.select`
   border-radius: 1vh;
 `;
 
+export const Selection = styled.select`
+  width: 50vh;
+  height: 4vh;
+
+  border-radius: 1vh;
+`;
+
 export const Option = styled.option`
   border-width: 0;
+  width: 50vh;
+  height: 4vh;
+
+  border-width: 0;
+  border-radius: 1vh;
+
+  font-size: 2.3vh;
 `;
 
 export const LabelOptions = styled.h3`
@@ -65,7 +79,8 @@ export const LabelOptions = styled.h3`
 
 export const ContainerButton = styled(Link)`
   position: fixed;
-  left: 73vh;
+  left: 10vh;
+  opacity: 1;
 
   width: 25vh;
   height: 7vh;
@@ -126,4 +141,45 @@ export const Error = styled.p`
   color: red;
 
   margin: -2% 0;
+`;
+
+export const InputButton = styled.input.attrs({ type: 'submit' })`
+  position: fixed;
+  left: 73vh;
+
+  width: 25vh;
+  height: 7vh;
+
+  text-align: center;
+
+  background-color: #f12711;
+
+  text-decoration: none;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  //Title
+  font-weight: bold;
+  font-size: 18px;
+  color: #ffffff;
+
+  &:hover {
+    box-shadow: -8px 8px 0 0 #000;
+    transform: translate(8px, -8px);
+    -webkit-transform: translate(8px, -8px);
+    -moz-transform: translate(8px, -8px);
+    -ms-transform: translate(8px, -8px);
+    -o-transform: translate(8px, -8px);
+
+    border: solid 2px #000;
+    border-radius: 8px;
+    margin: 7px 0;
+    cursor: pointer;
+    transition: all ease-in 0.3s;
+    -webkit-transition: all ease-in 0.3s;
+    -moz-transition: all ease-in 0.3s;
+    -ms-transition: all ease-in 0.3s;
+    -o-transition: all ease-in 0.3s;
+  }
 `;

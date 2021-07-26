@@ -43,11 +43,36 @@ export default function Result() {
 
     const DateInitial = dataInicio.replace('-', '').replace('-', '');
     const DateFinal = dataTermino.replace('-', '').replace('-', '');
-    const TotalDias = DateInitial - DateFinal;
 
-    const salarioDividido = ultimoSalario / 30;
-    const saldoMultiplicado = salarioDividido * TotalDias;
-    console.log(saldoMultiplicado);
+    const DateInitialFormatted = DateInitial.split('').splice(0, 6).join('');
+    const DateFinalFormatted = DateFinal.split('').splice(0, 6).join('');
+
+    const DateMothTotal = DateFinalFormatted - DateInitialFormatted;
+
+    if (DateInitialFormatted === DateFinalFormatted) {
+      if (DateMothTotal > 0) {
+        const restDays = DateFinal - DateInitial;
+        const restCash = +((ultimoSalario / 30) * restDays).toFixed(2);
+
+        const restCashVacation =
+          DateMothTotal(ultimoSalario + ultimoSalario) / 3;
+        const restCashAndVocationFormatted =
+          +restCashVacation
+            .toString()
+            .replace('.', '')
+            .split('')
+            .splice(0, 3)
+            .join('') + restCash;
+
+        console.log(DateMothTotal);
+        console.log(restCashVacation);
+        console.log(restCashAndVocationFormatted);
+        console.log(restDays);
+        console.log(restCash);
+      } else {
+        console.log('não é');
+      }
+    }
   }
 
   const defaultOptions = {
