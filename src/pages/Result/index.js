@@ -49,28 +49,48 @@ export default function Result() {
 
     const DateMothTotal = DateFinalFormatted - DateInitialFormatted;
 
-    if (DateInitialFormatted === DateFinalFormatted) {
-      if (DateMothTotal > 0) {
-        const restDays = DateFinal - DateInitial;
-        const restCash = +((ultimoSalario / 30) * restDays).toFixed(2);
+    const restDays = DateFinal - DateInitial;
 
-        const restCashVacation =
-          DateMothTotal(ultimoSalario + ultimoSalario) / 3;
+    if (DateInitialFormatted === DateFinalFormatted) {
+      // Valor dos dias trabalhados
+      const restCash = +((ultimoSalario / 30) * restDays).toFixed(2);
+      console.log(restCash);
+    } else {
+      if (DateMothTotal > 0) {
+        // Trabalhou mais de 1 mês
+        const restCashVacation = (ultimoSalario + ultimoSalario) / 3;
         const restCashAndVocationFormatted =
-          +restCashVacation
+          (+restCashVacation
             .toString()
             .replace('.', '')
             .split('')
             .splice(0, 3)
-            .join('') + restCash;
+            .join('') /
+            12) *
+          DateMothTotal;
 
-        console.log(DateMothTotal);
+        const decimoTerceiroProporcional = +(
+          (ultimoSalario / 12) *
+          DateMothTotal
+        ).toFixed(2);
+        const fgts = +(
+          (8 % (DateMothTotal * Number(ultimoSalario))) *
+          100
+        ).toFixed(2);
+
+        const multaFgts = 40 % fgts;
+
+        console.log('FGTS', fgts);
+        console.log('Multa FGTS', multaFgts);
+
         console.log(restCashVacation);
-        console.log(restCashAndVocationFormatted);
-        console.log(restDays);
-        console.log(restCash);
+        console.log('13º Salário Proporcional', decimoTerceiroProporcional);
+        console.log(
+          'Valor correto do décimo terceiro',
+          restCashAndVocationFormatted,
+        );
       } else {
-        console.log('não é');
+        console.log('else');
       }
     }
   }
