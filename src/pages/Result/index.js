@@ -33,14 +33,6 @@ export default function Result() {
     const feriasVen = state.data.feriasVen;
     const avisoPrev = state.data.avisoPrev;
 
-    console.log(dataInicio);
-    console.log(dataTermino);
-    console.log(ultimoSalario);
-    console.log(numeroDependentes);
-    console.log(motivoTermino);
-    console.log(feriasVen);
-    console.log(avisoPrev);
-
     const DateInitial = dataInicio.replace('-', '').replace('-', '');
     const DateFinal = dataTermino.replace('-', '').replace('-', '');
 
@@ -58,8 +50,8 @@ export default function Result() {
     } else {
       if (DateMothTotal > 0) {
         // Trabalhou mais de 1 mês
-        const restCashVacation = (ultimoSalario + ultimoSalario) / 3;
-        const restCashAndVocationFormatted =
+        const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
+        const restCashAndVocationFormatted = +(
           (+restCashVacation
             .toString()
             .replace('.', '')
@@ -67,7 +59,8 @@ export default function Result() {
             .splice(0, 3)
             .join('') /
             12) *
-          DateMothTotal;
+          DateMothTotal
+        ).toFixed(2);
 
         const decimoTerceiroProporcional = +(
           (ultimoSalario / 12) *
@@ -78,12 +71,30 @@ export default function Result() {
           100
         ).toFixed(2);
 
-        const multaFgts = 40 % fgts;
+        const multaFgts = +(40 % fgts).toFixed(2);
 
+        const inssSalario = +((ultimoSalario / 100) * 7.9).toFixed(2);
+        const inssDecimo = +((decimoTerceiroProporcional / 100) * 7.9).toFixed(
+          2,
+        );
+
+        //cálculo total
+        const soma =
+          +ultimoSalario +
+          +decimoTerceiroProporcional +
+          +decimoTerceiroProporcional +
+          +restCashAndVocationFormatted;
+
+        const sub = +inssSalario + +inssDecimo;
+        const total = soma - sub;
+
+        console.log('soma', soma);
+        console.log('total', total);
+        console.log('inssSalario', inssSalario);
+        console.log('inssDecimo', inssDecimo);
         console.log('FGTS', fgts);
         console.log('Multa FGTS', multaFgts);
 
-        console.log(restCashVacation);
         console.log('13º Salário Proporcional', decimoTerceiroProporcional);
         console.log(
           'Valor correto do décimo terceiro',
