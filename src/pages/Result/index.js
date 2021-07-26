@@ -18,7 +18,12 @@ import resultAnimation from '../../lottie/result.json';
 
 import Background from '../../assets/background-result.jpg';
 
+import { useStateMachine } from 'little-state-machine';
+import { updateData } from '../../routes';
+
 export default function Result() {
+  const { state } = useStateMachine(updateData);
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -32,7 +37,7 @@ export default function Result() {
       <BackgroundImage src={Background} />
 
       <ContainerDatails>
-        <TitleResultado>Resultado</TitleResultado>
+        <TitleResultado>{state.data.dataInicio}</TitleResultado>
         <Title>
           O valor líquido (depois dos descontos) da sua rescisão é de:
         </Title>

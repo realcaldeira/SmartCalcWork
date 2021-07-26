@@ -12,8 +12,6 @@ import {
   Data,
   Options,
   LabelOptions,
-  Select,
-  Option,
   ContainerButton,
   TitleButton,
   LottieContainer,
@@ -26,7 +24,13 @@ import { Input } from '../../components/Input';
 import { Radio } from '../../components/Radio';
 import Background from '../../assets/background-calculator.jpg';
 
+import { useStateMachine } from 'little-state-machine';
+
+import { updateData } from '../../routes';
+
 export default function Calculator() {
+  const { actions } = useStateMachine({ updateData });
+
   const {
     register,
     handleSubmit,
@@ -34,7 +38,14 @@ export default function Calculator() {
   } = useForm();
 
   function onSubmit(data) {
-    alert(JSON.stringify(data));
+    actions.updateData({
+      dataInicio: data.dataInicio,
+      dataTermino: data.dataTermino,
+      ultimoSalario: data.ultimoSalario,
+      numeroDependentes: data.numeroDependentes,
+      feriasVen: data.feriasVen,
+      avisoPrev: data.avisoPrev,
+    });
   }
 
   const defaultOptions = {
@@ -110,7 +121,7 @@ export default function Calculator() {
             />
             {errors.avisoPrev && <Error>Você selecionar uma opção.</Error>}
 
-            <Input type="submit"></Input>
+            <Input type="submit" to="/result"></Input>
 
             <ContainerButton to="/result">
               <TitleButton>Calcular</TitleButton>
