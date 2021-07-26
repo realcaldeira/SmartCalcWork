@@ -24,10 +24,6 @@ const defaultOptions = {
 };
 
 export default function Home() {
-  function handleStartNow() {
-    alert('Teste');
-  }
-
   return (
     <Container>
       <ContainerMobile>

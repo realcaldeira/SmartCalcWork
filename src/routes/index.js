@@ -16,6 +16,7 @@ createStore({
     dataTermino: '',
     ultimoSalario: '',
     numeroDependentes: '',
+    motivoTermino: '',
     feriasVen: '',
     avisoPrev: '',
   },

@@ -12,8 +12,6 @@ import {
 import Background from '../../assets/background-result.jpg';
 
 export default function ResultDatails() {
-  const titles = ['EVENTO', 'REF', 'PROVENTO', 'DESCONTO'];
-
   return (
     <Container>
       <BackgroundImage src={Background} />

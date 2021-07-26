@@ -43,6 +43,7 @@ export default function Calculator(props) {
       dataTermino: data.dataTermino,
       ultimoSalario: data.ultimoSalario,
       numeroDependentes: data.numeroDependentes,
+      motivoTermino: data.motivoTermino,
       feriasVen: data.feriasVen,
       avisoPrev: data.avisoPrev,
     });
@@ -62,9 +63,9 @@ export default function Calculator(props) {
   const Select = React.forwardRef(({ onChange, onBlur, name }, ref) => (
     <>
       <select name={name} ref={ref} onChange={onChange} onBlur={onBlur}>
-        <option value="20">Pedido de demissão</option>
-        <option value="300">Pedido de demissão</option>
-        <option value="240">Pedido de demissão</option>
+        <option value="pedido">Pedido de demissão</option>
+        <option value="dispensaS">Dispensa sem justa causa</option>
+        <option value="dispensaS">Dispensa cem justa causa</option>
       </select>
     </>
   ));
@@ -110,7 +111,10 @@ export default function Calculator(props) {
 
             <Options>
               <LabelOptions>Motivo do término de contrato</LabelOptions>
-              <Select {...register('terminoContrato')} />
+              <Select
+                {...register('terminoContrato')}
+                {...register('motivoTermino')}
+              />
             </Options>
             <Radio
               title="Você possui férias vencidas?"
