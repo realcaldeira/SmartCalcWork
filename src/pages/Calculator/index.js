@@ -68,7 +68,7 @@ export default function Calculator(props) {
       <Selection name={name} ref={ref} onChange={onChange} onBlur={onBlur}>
         <Option value="pedido">Pedido de demissão</Option>
         <Option value="dispensaS">Dispensa sem justa causa</Option>
-        <Option value="dispensaS">Dispensa cem justa causa</Option>
+        <Option value="dispensaC">Dispensa cem justa causa</Option>
       </Selection>
     </>
   ));

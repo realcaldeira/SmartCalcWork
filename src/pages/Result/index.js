@@ -43,67 +43,164 @@ export default function Result() {
 
     const restDays = DateFinal - DateInitial;
 
-    if (DateInitialFormatted === DateFinalFormatted) {
-      // Valor dos dias trabalhados
-      const restCash = +((ultimoSalario / 30) * restDays).toFixed(2);
-      console.log(restCash);
-    } else {
-      if (DateMothTotal > 0) {
-        // Trabalhou mais de 1 mês
-        const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
-        const restCashAndVocationFormatted = +(
-          (+restCashVacation
+    if (
+      motivoTermino === 'pedido' &&
+      feriasVen === 'No' &&
+      avisoPrev === 'No'
+    ) {
+    } else if (
+      motivoTermino === 'dispensaS' &&
+      feriasVen == 'No' &&
+      avisoPrev == 'No'
+    ) {
+      if (DateInitialFormatted === DateFinalFormatted) {
+        // Valor dos dias trabalhados
+        const restCash = +((ultimoSalario / 30) * restDays).toFixed(2);
+        console.log(restCash);
+      } else {
+        if (DateMothTotal > 0) {
+          //dias trabalhados
+          const restCash = +((ultimoSalario / 30) * restDays)
             .toString()
             .replace('.', '')
             .split('')
-            .splice(0, 3)
-            .join('') /
-            12) *
-          DateMothTotal
-        ).toFixed(2);
+            .splice(0, 2)
+            .join('');
 
-        const decimoTerceiroProporcional = +(
-          (ultimoSalario / 12) *
-          DateMothTotal
-        ).toFixed(2);
-        const fgts = +(
-          (8 % (DateMothTotal * Number(ultimoSalario))) *
-          100
-        ).toFixed(2);
+          // Trabalhou mais de 1 mês
+          const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
+          const restCashAndVocationFormatted = +(
+            (+restCashVacation
+              .toString()
+              .replace('.', '')
+              .split('')
+              .splice(0, 3)
+              .join('') /
+              12) *
+            DateMothTotal
+          ).toFixed(2);
 
-        const multaFgts = +(40 % fgts).toFixed(2);
+          const decimoTerceiroProporcional = +(
+            (ultimoSalario / 12) *
+            DateMothTotal
+          ).toFixed(2);
+          const fgts = +(
+            (8 % (DateMothTotal * Number(ultimoSalario))) *
+            100
+          ).toFixed(2);
 
-        const inssSalario = +((ultimoSalario / 100) * 7.9).toFixed(2);
-        const inssDecimo = +((decimoTerceiroProporcional / 100) * 7.9).toFixed(
-          2,
-        );
+          const multaFgts = +(40 % fgts).toFixed(2);
 
-        //cálculo total
-        const soma =
-          +ultimoSalario +
-          +decimoTerceiroProporcional +
-          +decimoTerceiroProporcional +
-          +restCashAndVocationFormatted;
+          const inssSalario = +((ultimoSalario / 100) * 7.9).toFixed(2);
+          const inssDecimo = +(
+            (decimoTerceiroProporcional / 100) *
+            7.9
+          ).toFixed(2);
 
-        const sub = +inssSalario + +inssDecimo;
-        const total = soma - sub;
+          //cálculo total
+          const soma =
+            +ultimoSalario +
+            +decimoTerceiroProporcional +
+            +decimoTerceiroProporcional +
+            +restCashAndVocationFormatted;
 
-        console.log('soma', soma);
-        console.log('total', total);
-        console.log('inssSalario', inssSalario);
-        console.log('inssDecimo', inssDecimo);
-        console.log('FGTS', fgts);
-        console.log('Multa FGTS', multaFgts);
+          const sub = +inssSalario + +inssDecimo;
+          const total = soma - sub;
 
-        console.log('13º Salário Proporcional', decimoTerceiroProporcional);
-        console.log(
-          'Valor correto do décimo terceiro',
-          restCashAndVocationFormatted,
-        );
-      } else {
-        console.log('else');
+          console.log('restCash', restCash);
+          console.log('Aviso Previo indenizado', ultimoSalario);
+          console.log('13º Salário Proporcional', decimoTerceiroProporcional);
+          console.log('13º Salário Aviso Prévio', decimoTerceiroProporcional);
+          console.log('Férias Vencidas');
+          console.log('Férias Proporcionais', decimoTerceiroProporcional);
+          console.log('Férias sobre aviso prévio', decimoTerceiroProporcional);
+          console.log('1/3 Férias');
+          console.log('inssSalario', inssSalario);
+          console.log('INSS 13º Salário*', inssDecimo);
+          console.log('***********************');
+          console.log('soma', soma);
+          console.log('total', total);
+
+          console.log('FGTS', fgts);
+          console.log('Multa FGTS', multaFgts);
+
+          console.log(
+            'Valor correto do décimo terceiro',
+            restCashAndVocationFormatted,
+          );
+        } else {
+          console.log('else');
+        }
       }
+    } else if (
+      motivoTermino === 'dispensaC' &&
+      feriasVen === 'No' &&
+      avisoPrev == 'No'
+    ) {
+    } else {
     }
+
+    // if (DateInitialFormatted === DateFinalFormatted) {
+    //   // Valor dos dias trabalhados
+    //   const restCash = +((ultimoSalario / 30) * restDays).toFixed(2);
+    //   console.log(restCash);
+    // } else {
+    //   if (DateMothTotal > 0) {
+    //     // Trabalhou mais de 1 mês
+    //     const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
+    //     const restCashAndVocationFormatted = +(
+    //       (+restCashVacation
+    //         .toString()
+    //         .replace('.', '')
+    //         .split('')
+    //         .splice(0, 3)
+    //         .join('') /
+    //         12) *
+    //       DateMothTotal
+    //     ).toFixed(2);
+
+    //     const decimoTerceiroProporcional = +(
+    //       (ultimoSalario / 12) *
+    //       DateMothTotal
+    //     ).toFixed(2);
+    //     const fgts = +(
+    //       (8 % (DateMothTotal * Number(ultimoSalario))) *
+    //       100
+    //     ).toFixed(2);
+
+    //     const multaFgts = +(40 % fgts).toFixed(2);
+
+    //     const inssSalario = +((ultimoSalario / 100) * 7.9).toFixed(2);
+    //     const inssDecimo = +((decimoTerceiroProporcional / 100) * 7.9).toFixed(
+    //       2,
+    //     );
+
+    //     //cálculo total
+    //     const soma =
+    //       +ultimoSalario +
+    //       +decimoTerceiroProporcional +
+    //       +decimoTerceiroProporcional +
+    //       +restCashAndVocationFormatted;
+
+    //     const sub = +inssSalario + +inssDecimo;
+    //     const total = soma - sub;
+
+    //     console.log('soma', soma);
+    //     console.log('total', total);
+    //     console.log('inssSalario', inssSalario);
+    //     console.log('inssDecimo', inssDecimo);
+    //     console.log('FGTS', fgts);
+    //     console.log('Multa FGTS', multaFgts);
+
+    //     console.log('13º Salário Proporcional', decimoTerceiroProporcional);
+    //     console.log(
+    //       'Valor correto do décimo terceiro',
+    //       restCashAndVocationFormatted,
+    //     );
+    //   } else {
+    //     console.log('else');
+    //   }
+    // }
   }
 
   const defaultOptions = {
