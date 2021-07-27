@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Lottie from 'react-lottie';
 
@@ -23,6 +23,8 @@ import { updateData } from '../../routes';
 
 export default function Result() {
   const { state } = useStateMachine(updateData);
+
+  const [total, setTotal] = useState('');
 
   function logica() {
     const dataInicio = state.data.dataInicio;
@@ -105,7 +107,8 @@ export default function Result() {
             +restCashAndVocationFormatted;
 
           const sub = +inssSalario + +inssDecimo;
-          const total = soma - sub;
+          const totais = soma - sub;
+          setTotal(totais);
 
           console.log('restCash', restCash);
           console.log('Aviso Previo indenizado', ultimoSalario);
@@ -135,72 +138,96 @@ export default function Result() {
     } else if (
       motivoTermino === 'dispensaC' &&
       feriasVen === 'No' &&
-      avisoPrev == 'No'
+      avisoPrev === 'No'
     ) {
-    } else {
+      console.log('teste');
+    } else if (
+      motivoTermino === 'dispensaS' &&
+      feriasVen === 'No' &&
+      avisoPrev === 'Yes'
+    ) {
+      if (DateInitialFormatted === DateFinalFormatted) {
+        // Valor dos dias trabalhados
+        const restCash = +((ultimoSalario / 30) * restDays).toFixed(2);
+        console.log(restCash);
+      } else {
+        if (DateMothTotal > 0) {
+          //dias trabalhados
+          const restCash = +((ultimoSalario / 30) * restDays)
+            .toString()
+            .replace('.', '')
+            .split('')
+            .splice(0, 2)
+            .join('');
+
+          // Trabalhou mais de 1 mês
+          const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
+          const restCashAndVocationFormatted = +(
+            (+restCashVacation
+              .toString()
+              .replace('.', '')
+              .split('')
+              .splice(0, 3)
+              .join('') /
+              12) *
+            DateMothTotal
+          ).toFixed(2);
+
+          const decimoTerceiroProporcional = +(
+            (ultimoSalario / 12) *
+            DateMothTotal
+          ).toFixed(2);
+          const fgts = +(
+            (8 % (DateMothTotal * Number(ultimoSalario))) *
+            100
+          ).toFixed(2);
+
+          const multaFgts = +(40 % fgts).toFixed(2);
+
+          const inssSalario = +((restCash / 100) * 7.9).toFixed(2);
+          const inssDecimo = +(
+            (decimoTerceiroProporcional / 100) *
+            7.9
+          ).toFixed(2);
+
+          //cálculo total
+          const soma =
+            restCash +
+            +decimoTerceiroProporcional +
+            +decimoTerceiroProporcional +
+            +restCashAndVocationFormatted;
+
+          const sub = +inssSalario + +inssDecimo;
+          const totais = soma - sub;
+
+          setTotal(totais);
+
+          console.log('restCash', restCash);
+          console.log('Aviso Previo indenizado', ultimoSalario);
+          console.log('13º Salário Proporcional', decimoTerceiroProporcional);
+          console.log('13º Salário Aviso Prévio', decimoTerceiroProporcional);
+          console.log('Férias Vencidas');
+          console.log('Férias Proporcionais', decimoTerceiroProporcional);
+          console.log('Férias sobre aviso prévio', decimoTerceiroProporcional);
+          console.log('1/3 Férias');
+          console.log('inssSalario', inssSalario);
+          console.log('INSS 13º Salário*', inssDecimo);
+          console.log('***********************');
+          console.log('soma', soma);
+          console.log('total', total);
+
+          console.log('FGTS', fgts);
+          console.log('Multa FGTS', multaFgts);
+
+          console.log(
+            'Valor correto do décimo terceiro',
+            restCashAndVocationFormatted,
+          );
+        } else {
+          console.log('else');
+        }
+      }
     }
-
-    // if (DateInitialFormatted === DateFinalFormatted) {
-    //   // Valor dos dias trabalhados
-    //   const restCash = +((ultimoSalario / 30) * restDays).toFixed(2);
-    //   console.log(restCash);
-    // } else {
-    //   if (DateMothTotal > 0) {
-    //     // Trabalhou mais de 1 mês
-    //     const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
-    //     const restCashAndVocationFormatted = +(
-    //       (+restCashVacation
-    //         .toString()
-    //         .replace('.', '')
-    //         .split('')
-    //         .splice(0, 3)
-    //         .join('') /
-    //         12) *
-    //       DateMothTotal
-    //     ).toFixed(2);
-
-    //     const decimoTerceiroProporcional = +(
-    //       (ultimoSalario / 12) *
-    //       DateMothTotal
-    //     ).toFixed(2);
-    //     const fgts = +(
-    //       (8 % (DateMothTotal * Number(ultimoSalario))) *
-    //       100
-    //     ).toFixed(2);
-
-    //     const multaFgts = +(40 % fgts).toFixed(2);
-
-    //     const inssSalario = +((ultimoSalario / 100) * 7.9).toFixed(2);
-    //     const inssDecimo = +((decimoTerceiroProporcional / 100) * 7.9).toFixed(
-    //       2,
-    //     );
-
-    //     //cálculo total
-    //     const soma =
-    //       +ultimoSalario +
-    //       +decimoTerceiroProporcional +
-    //       +decimoTerceiroProporcional +
-    //       +restCashAndVocationFormatted;
-
-    //     const sub = +inssSalario + +inssDecimo;
-    //     const total = soma - sub;
-
-    //     console.log('soma', soma);
-    //     console.log('total', total);
-    //     console.log('inssSalario', inssSalario);
-    //     console.log('inssDecimo', inssDecimo);
-    //     console.log('FGTS', fgts);
-    //     console.log('Multa FGTS', multaFgts);
-
-    //     console.log('13º Salário Proporcional', decimoTerceiroProporcional);
-    //     console.log(
-    //       'Valor correto do décimo terceiro',
-    //       restCashAndVocationFormatted,
-    //     );
-    //   } else {
-    //     console.log('else');
-    //   }
-    // }
   }
 
   const defaultOptions = {
@@ -211,6 +238,7 @@ export default function Result() {
       preserveAspectRatio: 'xMidYMid slice',
     },
   };
+
   return (
     <Container>
       <BackgroundImage src={Background} />
@@ -220,7 +248,7 @@ export default function Result() {
         <Title>
           O valor líquido (depois dos descontos) da sua rescisão é de:
         </Title>
-        <ResultTotal>R$ 592,76</ResultTotal>
+        <ResultTotal>R$ {total}</ResultTotal>
         <ButtonDetails onClick={logica}>
           <ButtonTitle>Ver mais detalhes</ButtonTitle>
         </ButtonDetails>

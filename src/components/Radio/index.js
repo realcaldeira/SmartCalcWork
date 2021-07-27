@@ -7,9 +7,9 @@ export function Radio({ title, ...rest }) {
     <OptionsRadio {...rest}>
       <Title>{title}</Title>
       <FériasVencidas {...rest}>
-        <Radios name="Dev" type="radio" value="No" title="Sim" {...rest} />
+        <Radios name="Dev" type="radio" value="Yes" title="Sim" {...rest} />
         <Title>NÃO</Title>
-        <Radios name="Dev" type="radio" value="Yes" title="Não" {...rest} />
+        <Radios name="Dev" type="radio" value="No" title="Não" {...rest} />
         <Title>SIM</Title>
       </FériasVencidas>
     </OptionsRadio>
