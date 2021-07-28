@@ -19,12 +19,24 @@ import resultAnimation from '../../lottie/result.json';
 import Background from '../../assets/background-result.jpg';
 
 import { useStateMachine } from 'little-state-machine';
-import { updateData } from '../../routes';
+import { updateData, updateDatails } from '../../routes';
 
-export default function Result() {
+export default function Result(props) {
   const { state } = useStateMachine(updateData);
+  const { actions } = useStateMachine({ updateDatails });
 
-  const [total, setTotal] = useState('');
+  const [saldoDeSalario, setSaldoDeSalario] = useState('');
+
+  const [total, setTotal] = useState('0');
+
+  function onSubmit() {
+    actions.updateDatails({
+      saldoDeSalario: saldoDeSalario,
+      ref: total,
+    });
+
+    props.history.push('./ResultDatails');
+  }
 
   function logica() {
     const dataInicio = state.data.dataInicio;
@@ -48,7 +60,7 @@ export default function Result() {
 
     const DateMothTotal = DateFinalFormatted - DateInitialFormatted;
 
-    const restDays = DateFinal - DateInitial;
+    const restDays = DateFinal - DateInitial + 1;
 
     if (
       motivoTermino === 'pedido' &&
@@ -56,15 +68,16 @@ export default function Result() {
       avisoPrev === 'No'
     ) {
       //dias trabalhados
-      const restCash = +((ultimoSalario / 30) * restDays)
+      const restCash = +(+((ultimoSalario / 30) * ultimoSalario) * restDays)
         .toString()
         .replace('.', '')
         .split('')
-        .splice(0, 2)
+        .splice(0, 3)
         .join('');
 
       // Trabalhou mais de 1 mês
       const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
+
       const restCashAndVocationFormatted = +(
         (+restCashVacation
           .toString()
@@ -73,12 +86,12 @@ export default function Result() {
           .splice(0, 3)
           .join('') /
           12) *
-        DateMothTotal
+        [DateMothTotal ? 0 : 1]
       ).toFixed(2);
 
       const decimoTerceiroProporcional = +(
         (ultimoSalario / 12) *
-        DateMothTotal
+        [DateMothTotal ? 0 : 1]
       ).toFixed(2);
       const fgts = +(
         (8 % (DateMothTotal * Number(ultimoSalario))) *
@@ -92,7 +105,8 @@ export default function Result() {
 
       //cálculo total
       const soma =
-        +(+decimoTerceiroProporcional) +
+        restCash +
+        +decimoTerceiroProporcional +
         +decimoTerceiroProporcional +
         +restCashAndVocationFormatted;
 
@@ -101,7 +115,8 @@ export default function Result() {
       setTotal(totais);
 
       console.log('restCash', restCash);
-      console.log('Aviso Previo indenizado', ultimoSalario);
+      console.log('Ref days', restDays + 1);
+
       console.log('13º Salário Proporcional', decimoTerceiroProporcional);
       console.log('13º Salário Aviso Prévio', decimoTerceiroProporcional);
       console.log('Férias Vencidas');
@@ -127,11 +142,11 @@ export default function Result() {
       avisoPrev === 'Yes'
     ) {
       //dias trabalhados
-      const restCash = +((ultimoSalario / 30) * restDays)
+      const restCash = +(+((ultimoSalario / 30) * ultimoSalario) * restDays)
         .toString()
         .replace('.', '')
         .split('')
-        .splice(0, 2)
+        .splice(0, 3)
         .join('');
 
       // Trabalhou mais de 1 mês
@@ -144,12 +159,12 @@ export default function Result() {
           .splice(0, 3)
           .join('') /
           12) *
-        DateMothTotal
+        [DateMothTotal ? 0 : 1]
       ).toFixed(2);
 
       const decimoTerceiroProporcional = +(
         (ultimoSalario / 12) *
-        DateMothTotal
+        [DateMothTotal ? 0 : 1]
       ).toFixed(2);
       const fgts = +(
         (8 % (DateMothTotal * Number(ultimoSalario))) *
@@ -173,6 +188,7 @@ export default function Result() {
       setTotal(totais);
 
       console.log('restCash', restCash);
+      console.log('restDays', restDays);
       console.log('Aviso Previo indenizado', ultimoSalario);
       console.log('13º Salário Proporcional', decimoTerceiroProporcional);
 
@@ -199,11 +215,11 @@ export default function Result() {
       avisoPrev === 'No'
     ) {
       //dias trabalhados
-      const restCash = +((ultimoSalario / 30) * restDays)
+      const restCash = +(+((ultimoSalario / 30) * ultimoSalario) * restDays)
         .toString()
         .replace('.', '')
         .split('')
-        .splice(0, 2)
+        .splice(0, 3)
         .join('');
 
       // Trabalhou mais de 1 mês
@@ -221,7 +237,7 @@ export default function Result() {
 
       const decimoTerceiroProporcional = +(
         (ultimoSalario / 12) *
-        DateMothTotal
+        [DateMothTotal ? 0 : 1]
       ).toFixed(2);
       const fgts = +(
         (8 % (DateMothTotal * Number(ultimoSalario))) *
@@ -235,6 +251,7 @@ export default function Result() {
 
       //cálculo total
       const soma =
+        restCash +
         +ultimoSalario +
         +decimoTerceiroProporcional +
         +decimoTerceiroProporcional +
@@ -343,18 +360,18 @@ export default function Result() {
       feriasVen === 'Yes' &&
       avisoPrev === 'Yes'
     ) {
-      console.log('');
+      console.log('Não existe');
     } else if (
       motivoTermino === 'dispensaC' &&
       feriasVen === 'No' &&
       avisoPrev === 'No'
     ) {
       //dias trabalhados
-      const restCash = +((ultimoSalario / 30) * restDays)
+      const restCash = +(+((ultimoSalario / 30) * ultimoSalario) * restDays)
         .toString()
         .replace('.', '')
         .split('')
-        .splice(0, 2)
+        .splice(0, 3)
         .join('');
 
       // Trabalhou mais de 1 mês
@@ -386,7 +403,8 @@ export default function Result() {
 
       //cálculo total
       const soma =
-        +(+decimoTerceiroProporcional) +
+        restCash +
+        +decimoTerceiroProporcional +
         +decimoTerceiroProporcional +
         +restCashAndVocationFormatted;
 
@@ -420,62 +438,8 @@ export default function Result() {
       motivoTermino === 'dispensaC' &&
       feriasVen === 'Yes' &&
       avisoPrev === 'No'
-    ) {
-      if (DateInitialYearFormatted < DateFinalYearFormatted) {
-        //dias trabalhados
-        const restCash = +((ultimoSalario / 30) * restDays)
-          .toString()
-          .replace('.', '')
-          .split('')
-          .splice(0, 2)
-          .join('');
-
-        // Trabalhou mais de 1 mês
-        const restCashVacation = +((ultimoSalario + ultimoSalario) / 3)
-          .toString()
-          .replace('.', '')
-          .split('')
-          .splice(0, 3)
-          .join('');
-        const restCashAndVocationFormatted = +(
-          (+restCashVacation
-            .toString()
-            .replace('.', '')
-            .split('')
-            .splice(0, 3)
-            .join('') /
-            12) *
-          DateMothTotal
-        ).toFixed(2);
-
-        const inssSalario = +((ultimoSalario / 100) * 7.9).toFixed(2);
-
-        //cálculo total
-        const soma = +restCashVacation + +ultimoSalario + restCash;
-
-        const sub = +inssSalario;
-        const totais = soma - sub;
-        setTotal(totais);
-
-        console.log('restCash', restCash);
-
-        console.log('Férias Vencidas', ultimoSalario);
-
-        console.log('1/3 Férias', restCashVacation);
-        console.log('inssSalario', inssSalario);
-
-        console.log('***********************');
-        console.log('soma', soma);
-        console.log('total', total);
-
-        console.log(
-          'Valor correto do décimo terceiro',
-          restCashAndVocationFormatted,
-        );
-      } else {
-        console.log('ERRO');
-      }
-    }
+    )
+      console.log('Não existe');
   }
 
   const defaultOptions = {
@@ -500,11 +464,11 @@ export default function Result() {
         <Title>
           O valor líquido (depois dos descontos) da sua rescisão é de:
         </Title>
-        {/* <ResultTotal>R$ {total}</ResultTotal>
-        <ButtonDetails onClick={logica}>
+        <ResultTotal>R$ {total}</ResultTotal>
+        {/* <ButtonDetails onClick={logica}>
           <ButtonTitle>Ver mais detalhes</ButtonTitle>
         </ButtonDetails> */}
-        <ButtonDetails to="/resultDatails">
+        <ButtonDetails onClick={onSubmit}>
           <ButtonTitle>Ver mais detalhes</ButtonTitle>
         </ButtonDetails>
         <ContainerLottie>

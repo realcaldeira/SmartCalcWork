@@ -20,12 +20,24 @@ createStore({
     feriasVen: '',
     avisoPrev: '',
   },
+  dataResults: {
+    saldoDeSalario: '',
+    ref: '50',
+  },
 });
 
 export function updateData(globalStore, payload) {
   return {
     ...globalStore,
     data: {
+      ...payload,
+    },
+  };
+}
+export function updateDatails(globalStore, payload) {
+  return {
+    ...globalStore,
+    dataResults: {
       ...payload,
     },
   };

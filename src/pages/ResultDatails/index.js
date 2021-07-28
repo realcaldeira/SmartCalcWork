@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
   Container,
@@ -12,7 +12,23 @@ import {
 
 import Background from '../../assets/background-result.jpg';
 
+import { useStateMachine } from 'little-state-machine';
+import { updateDatails } from '../../routes';
+
 export default function ResultDatails() {
+  const { state } = useStateMachine(updateDatails);
+
+  function details() {
+    const ref = state.dataResults.ref;
+    const saldoDeSalario = state.dataResults.saldoDeSalario;
+
+    console.log(ref);
+    console.log(saldoDeSalario);
+  }
+
+  useEffect(() => {
+    details();
+  }, []);
   return (
     <Container>
       <BackgroundImage src={Background} />
