@@ -500,13 +500,13 @@ export default function Result() {
         <Title>
           O valor líquido (depois dos descontos) da sua rescisão é de:
         </Title>
-        <ResultTotal>R$ {total}</ResultTotal>
+        {/* <ResultTotal>R$ {total}</ResultTotal>
         <ButtonDetails onClick={logica}>
           <ButtonTitle>Ver mais detalhes</ButtonTitle>
-        </ButtonDetails>
-        {/* <ButtonDetails to="/resultDatails">
-          <ButtonTitle>Ver mais detalhes</ButtonTitle>
         </ButtonDetails> */}
+        <ButtonDetails to="/resultDatails">
+          <ButtonTitle>Ver mais detalhes</ButtonTitle>
+        </ButtonDetails>
         <ContainerLottie>
           <Lottie options={defaultOptions} height={300} width={300} />
         </ContainerLottie>

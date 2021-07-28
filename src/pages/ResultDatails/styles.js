@@ -10,28 +10,42 @@ export const BackgroundImage = styled.img`
   height: 100%;
 `;
 
-export const TitleResultado = styled.h3`
+export const TitleResult = styled.h1`
   position: fixed;
-  top: -4%;
-  left: 5%;
 
+  color: #fff;
   font-size: 64px;
-  color: white;
+
+  left: 5%;
 `;
 
 export const ContainerDatails = styled.div`
   position: fixed;
-  top: 30%;
+  display: flex;
+  width: 100%;
+  top: 25%;
   left: 5%;
 `;
+export const Box = styled.div`
+  width: 15%;
+  margin: 0 1%;
 
-export const ContainerTitles = styled.div`
-  display: flex;
-  position: absolute;
-  left: 10%;
+  /* background-color: red; */
+
+  justify-content: center;
+  text-align: center;
 `;
 
-export const Title = styled.h3`
-  margin-right: 40%;
+export const Title = styled.h3``;
+
+export const TitleDatails = styled.h4`
   color: #4a00e0;
+
+  font-size: 105%;
+
+  margin-top: -5%;
+
+  /* border-bottom-style: dotted;
+  border-bottom-width: 0.5px;
+  border-bottom-color: #4a00e0; */
 `;
