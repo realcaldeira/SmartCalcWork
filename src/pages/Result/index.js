@@ -25,14 +25,33 @@ export default function Result(props) {
   const { state } = useStateMachine(updateData);
   const { actions } = useStateMachine({ updateDatails });
 
-  const [saldoDeSalario, setSaldoDeSalario] = useState('');
+  const [ref, setRef] = useState('');
+  const [restCash, setRestCash] = useState('');
+  const [inssSalario, setInssSalario] = useState('');
+  const [inssDecimo, setInssDecimo] = useState('');
 
-  const [total, setTotal] = useState('0');
+  const [saldoDeSalario, setSaldoDeSalario] = useState('');
+  const [saldoDeSalarioProvento, setSaldoDeSalarioProvento] = useState('');
+  const [decimoTerceiroProporcional, setDecimoTerceiroProporcional] =
+    useState('');
+  const [soma, setSoma] = useState('');
+  const [sub, setSub] = useState('');
+  const [total, setTotal] = useState('');
 
   function onSubmit() {
     actions.updateDatails({
       saldoDeSalario: saldoDeSalario,
-      ref: total,
+      saldoDeSalarioProvento: saldoDeSalarioProvento,
+      ref: ref,
+
+      restCash: restCash,
+      inssSalario: inssSalario,
+      inssDecimo: inssDecimo,
+
+      decimoTerceiroProporcional: decimoTerceiroProporcional,
+      soma: soma,
+      sub: sub,
+      total: total,
     });
 
     props.history.push('./ResultDatails');
@@ -61,6 +80,12 @@ export default function Result(props) {
     const DateMothTotal = DateFinalFormatted - DateInitialFormatted;
 
     const restDays = DateFinal - DateInitial + 1;
+    const restCash = +(+((ultimoSalario / 30) * ultimoSalario) * restDays)
+      .toString()
+      .replace('.', '')
+      .split('')
+      .splice(0, 3)
+      .join('');
 
     if (
       motivoTermino === 'pedido' &&
@@ -68,12 +93,6 @@ export default function Result(props) {
       avisoPrev === 'No'
     ) {
       //dias trabalhados
-      const restCash = +(+((ultimoSalario / 30) * ultimoSalario) * restDays)
-        .toString()
-        .replace('.', '')
-        .split('')
-        .splice(0, 3)
-        .join('');
 
       // Trabalhou mais de 1 mês
       const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
@@ -114,19 +133,21 @@ export default function Result(props) {
       const totais = (soma - sub).toFixed(2);
       setTotal(totais);
 
-      console.log('restCash', restCash);
-      console.log('Ref days', restDays + 1);
+      setRestCash(restCash);
+      setRef(restDays);
+      setSaldoDeSalario(+ultimoSalario);
+      setDecimoTerceiroProporcional(decimoTerceiroProporcional);
+      setInssSalario(inssSalario);
+      setInssDecimo(inssDecimo);
+      setSoma(soma);
+      setSub(sub);
 
-      console.log('13º Salário Proporcional', decimoTerceiroProporcional);
-      console.log('13º Salário Aviso Prévio', decimoTerceiroProporcional);
-      console.log('Férias Vencidas');
-      console.log('Férias Proporcionais', decimoTerceiroProporcional);
-      console.log('Férias sobre aviso prévio', decimoTerceiroProporcional);
-      console.log('1/3 Férias');
-      console.log('inssSalario', inssSalario);
-      console.log('INSS 13º Salário*', inssDecimo);
+      console.log('Férias Vencidas PRECISA SER FEITA');
+      console.log('1/3 Férias PRECISA SER FEITA');
+
       console.log('***********************');
       console.log('soma', soma);
+      console.log('sub', sub);
       console.log('total', total);
 
       console.log('FGTS', fgts);
@@ -141,14 +162,6 @@ export default function Result(props) {
       feriasVen === 'No' &&
       avisoPrev === 'Yes'
     ) {
-      //dias trabalhados
-      const restCash = +(+((ultimoSalario / 30) * ultimoSalario) * restDays)
-        .toString()
-        .replace('.', '')
-        .split('')
-        .splice(0, 3)
-        .join('');
-
       // Trabalhou mais de 1 mês
       const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
       const restCashAndVocationFormatted = +(
@@ -185,6 +198,15 @@ export default function Result(props) {
 
       const sub = (+inssSalario + +inssDecimo).toFixed(2);
       const totais = (soma - sub).toFixed(2);
+
+      setRestCash(restCash);
+      setRef(restDays);
+      setSaldoDeSalario(+ultimoSalario);
+      setDecimoTerceiroProporcional(decimoTerceiroProporcional);
+      setInssSalario(inssSalario);
+      setInssDecimo(inssDecimo);
+      setSoma(soma);
+      setSub(sub);
       setTotal(totais);
 
       console.log('restCash', restCash);
@@ -214,14 +236,6 @@ export default function Result(props) {
       feriasVen === 'No' &&
       avisoPrev === 'No'
     ) {
-      //dias trabalhados
-      const restCash = +(+((ultimoSalario / 30) * ultimoSalario) * restDays)
-        .toString()
-        .replace('.', '')
-        .split('')
-        .splice(0, 3)
-        .join('');
-
       // Trabalhou mais de 1 mês
       const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
       const restCashAndVocationFormatted = +(
@@ -250,15 +264,26 @@ export default function Result(props) {
       const inssDecimo = +((decimoTerceiroProporcional / 100) * 7.9).toFixed(2);
 
       //cálculo total
-      const soma =
+      const soma = (
         restCash +
         +ultimoSalario +
         +decimoTerceiroProporcional +
         +decimoTerceiroProporcional +
-        +restCashAndVocationFormatted;
+        +restCashAndVocationFormatted
+      ).toFixed(2);
 
       const sub = +inssSalario + +inssDecimo;
-      const totais = soma - sub;
+      const totais = (soma - sub).toFixed(2);
+      setTotal(totais);
+
+      setRestCash(restCash);
+      setRef(restDays);
+      setSaldoDeSalario(+ultimoSalario);
+      setDecimoTerceiroProporcional(decimoTerceiroProporcional);
+      setInssSalario(inssSalario);
+      setInssDecimo(inssDecimo);
+      setSoma(soma);
+      setSub(sub);
       setTotal(totais);
 
       console.log('restCash', restCash);
@@ -288,12 +313,6 @@ export default function Result(props) {
       avisoPrev === 'Yes'
     ) {
       //dias trabalhados
-      const restCash = +((ultimoSalario / 30) * restDays)
-        .toString()
-        .replace('.', '')
-        .split('')
-        .splice(0, 2)
-        .join('');
 
       // Trabalhou mais de 1 mês
       const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
@@ -325,17 +344,28 @@ export default function Result(props) {
       //cálculo total
       const soma =
         restCash +
-        +decimoTerceiroProporcional +
+        +ultimoSalario +
+        decimoTerceiroProporcional +
         +decimoTerceiroProporcional +
         +restCashAndVocationFormatted;
 
       const sub = +inssSalario + +inssDecimo;
       const totais = soma - sub;
 
+      setRestCash(restCash);
+      setRef(restDays);
+      setSaldoDeSalario('');
+      setSaldoDeSalarioProvento(+ultimoSalario);
+      setDecimoTerceiroProporcional(decimoTerceiroProporcional);
+      setInssSalario(inssSalario);
+      setInssDecimo(inssDecimo);
+      setSoma(soma);
+      setSub(sub);
       setTotal(totais);
 
       console.log('restCash', restCash);
-      console.log('Aviso Previo indenizado', ultimoSalario);
+      console.log('ultimoSalario', ultimoSalario);
+      console.log('Aviso Previo indenizado', '');
       console.log('13º Salário Proporcional', decimoTerceiroProporcional);
       console.log('13º Salário Aviso Prévio', decimoTerceiroProporcional);
       console.log('Férias Vencidas');
@@ -366,14 +396,6 @@ export default function Result(props) {
       feriasVen === 'No' &&
       avisoPrev === 'No'
     ) {
-      //dias trabalhados
-      const restCash = +(+((ultimoSalario / 30) * ultimoSalario) * restDays)
-        .toString()
-        .replace('.', '')
-        .split('')
-        .splice(0, 3)
-        .join('');
-
       // Trabalhou mais de 1 mês
       const restCashVacation = +(ultimoSalario + ultimoSalario) / 3;
       const restCashAndVocationFormatted = +(
@@ -410,6 +432,18 @@ export default function Result(props) {
 
       const sub = +inssSalario + +inssDecimo;
       const totais = soma - sub;
+
+      const outroTotal = (restCash + +ultimoSalario).toFixed(2);
+
+      setRestCash(outroTotal);
+      setRef(restDays);
+      setSaldoDeSalario('');
+      setSaldoDeSalarioProvento('');
+      setDecimoTerceiroProporcional(decimoTerceiroProporcional);
+      setInssSalario(inssSalario);
+      setInssDecimo(inssDecimo);
+      setSoma(soma);
+      setSub(sub);
       setTotal(totais);
 
       console.log('restCash', restCash);
@@ -433,7 +467,6 @@ export default function Result(props) {
         'Valor correto do décimo terceiro',
         restCashAndVocationFormatted,
       );
-      console.log('teste');
     } else if (
       motivoTermino === 'dispensaC' &&
       feriasVen === 'Yes' &&
@@ -464,7 +497,7 @@ export default function Result(props) {
         <Title>
           O valor líquido (depois dos descontos) da sua rescisão é de:
         </Title>
-        <ResultTotal>R$ {total}</ResultTotal>
+        <ResultTotal>R$ {[total ? total : 'NÃO EXISTE']}</ResultTotal>
         {/* <ButtonDetails onClick={logica}>
           <ButtonTitle>Ver mais detalhes</ButtonTitle>
         </ButtonDetails> */}

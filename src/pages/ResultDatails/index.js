@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import {
   Container,
@@ -18,17 +18,20 @@ import { updateDatails } from '../../routes';
 export default function ResultDatails() {
   const { state } = useStateMachine(updateDatails);
 
-  function details() {
-    const ref = state.dataResults.ref;
-    const saldoDeSalario = state.dataResults.saldoDeSalario;
+  const ref = state.dataResults.ref;
+  const saldoDeSalario = state.dataResults.saldoDeSalario;
+  const saldoDeSalarioProvento = state.dataResults.saldoDeSalarioProvento;
+  const restCash = state.dataResults.restCash;
+  const inssSalario = state.dataResults.inssSalario;
+  const inssDecimo = state.dataResults.inssDecimo;
 
-    console.log(ref);
-    console.log(saldoDeSalario);
-  }
+  const decimoTerceiroProporcional =
+    state.dataResults.decimoTerceiroProporcional;
+  const soma = state.dataResults.soma;
+  const sub = state.dataResults.sub;
+  const total = state.dataResults.total;
 
-  useEffect(() => {
-    details();
-  }, []);
+  console.log(saldoDeSalario);
   return (
     <Container>
       <BackgroundImage src={Background} />
@@ -54,7 +57,7 @@ export default function ResultDatails() {
 
         <Box>
           <Title>REF.</Title>
-          <TitleDatails>6</TitleDatails>
+          <TitleDatails>{ref}</TitleDatails>
           <TitleDatails>0</TitleDatails>
           <TitleDatails> 1/12</TitleDatails>
           <TitleDatails> 0/12</TitleDatails>
@@ -71,35 +74,39 @@ export default function ResultDatails() {
         <Box>
           <Title>PROVENTO</Title>
 
-          <TitleDatails> R$ 200,00</TitleDatails>
-          <TitleDatails>-</TitleDatails>
-          <TitleDatails>R$ 83,33</TitleDatails>
+          <TitleDatails> R$ {restCash}</TitleDatails>
+          <TitleDatails>
+            R$ {[saldoDeSalarioProvento ? saldoDeSalarioProvento : '-']}
+          </TitleDatails>
+          <TitleDatails>R$ {decimoTerceiroProporcional}</TitleDatails>
           <TitleDatails> R$ 0,00</TitleDatails>
           <TitleDatails>R$ 0,00</TitleDatails>
-          <TitleDatails> R$ 83,33</TitleDatails>
+          <TitleDatails> R$ {decimoTerceiroProporcional}</TitleDatails>
           <TitleDatails> R$ 0,00</TitleDatails>
           <TitleDatails>R$ 27,78</TitleDatails>
           <TitleDatails>-</TitleDatails>
           <TitleDatails>-</TitleDatails>
           <TitleDatails>-</TitleDatails>
-          <TitleDatails>R$ 394,44</TitleDatails>
+          <TitleDatails>R$ {soma}</TitleDatails>
         </Box>
 
         <Box>
           <Title>DESCONTO</Title>
 
           <TitleDatails> -</TitleDatails>
-          <TitleDatails>R$ 1.000,00</TitleDatails>
+          <TitleDatails>
+            R$ {[saldoDeSalario ? saldoDeSalario : '-']}
+          </TitleDatails>
           <TitleDatails>-</TitleDatails>
           <TitleDatails>-</TitleDatails>
           <TitleDatails>-</TitleDatails>
           <TitleDatails> -</TitleDatails>
           <TitleDatails>-</TitleDatails>
           <TitleDatails>-</TitleDatails>
-          <TitleDatails>R$ 15,00</TitleDatails>
+          <TitleDatails>R$ {inssSalario}</TitleDatails>
           <TitleDatails>R$ 0,00</TitleDatails>
-          <TitleDatails> R$ 6,24</TitleDatails>
-          <TitleDatails>R$ 1.021,24</TitleDatails>
+          <TitleDatails> R$ {inssDecimo}</TitleDatails>
+          <TitleDatails>R$ {sub}</TitleDatails>
         </Box>
       </ContainerDatails>
     </Container>

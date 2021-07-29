@@ -4,7 +4,6 @@ import Home from '../pages/Home';
 import Calculator from '../pages/Calculator';
 import Result from '../pages/Result';
 import ResultDatails from '../pages/ResultDatails';
-import Error from '../pages/Error';
 
 import { StateMachineProvider, createStore } from 'little-state-machine';
 
@@ -22,7 +21,16 @@ createStore({
   },
   dataResults: {
     saldoDeSalario: '',
-    ref: '50',
+    saldoDeSalarioProvento: '',
+    ref: '',
+    restCash: '',
+    inssSalario: '',
+    inssDecimo: '',
+
+    decimoTerceiroProporcional: '',
+    soma: '',
+    sub: '',
+    total: '',
   },
 });
 
