@@ -8,7 +8,7 @@ import Error from '../pages/Error';
 
 import { StateMachineProvider, createStore } from 'little-state-machine';
 
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 createStore({
   data: {
@@ -45,14 +45,14 @@ export function updateDatails(globalStore, payload) {
 
 export default function Routes() {
   return (
-    <Switch>
-      <StateMachineProvider>
+    <StateMachineProvider>
+      <Router>
         <Route path="/" component={Home} exact />
         <Route path="/calculator" component={Calculator} />
         <Route path="/result" component={Result} />
         <Route path="/resultDatails" component={ResultDatails} />
-      </StateMachineProvider>
-      <Route component={() => <Error />} />
-    </Switch>
+      </Router>
+      {/* <Route component={() => <Error />} /> */}
+    </StateMachineProvider>
   );
 }

@@ -12,8 +12,6 @@ import {
   Data,
   Options,
   LabelOptions,
-  ContainerButton,
-  TitleButton,
   LottieContainer,
   Error,
   InputButton,
@@ -131,10 +129,6 @@ export default function Calculator(props) {
             {errors.avisoPrev && <Error>Você selecionar uma opção.</Error>}
 
             <InputButton type="submit" to="/result" value="Calcular" />
-
-            <ContainerButton to="/result">
-              <TitleButton>Calcular</TitleButton>
-            </ContainerButton>
           </Data>
           <LottieContainer>
             <Lottie options={defaultOptions} height={400} width={400} />

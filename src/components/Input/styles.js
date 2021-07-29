@@ -16,13 +16,15 @@ export const DataTitle = styled.h3`
 `;
 
 export const DataInput = styled.input`
-  width: 50vh;
+  width: 47vh;
   height: 4vh;
 
   border-width: 0;
   border-radius: 1vh;
 
   font-size: 2.3vh;
+
+  text-align: center;
 
   ::placeholder {
     padding: 4vh;
