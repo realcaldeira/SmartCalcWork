@@ -44,10 +44,4 @@ $ cd ..
 # Instale as dependências
 $ yarn
 
-
-# Inicie o projeto
-$ expo start
-
-
-
 Este projeto foi feito com ❤ por Lucas Caldeira
