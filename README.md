@@ -1,4 +1,4 @@
-<h1><strong>SmartCalcWork</strong></h1>
+<div align="center"><h1><strong>SmartCalcWork</strong></h1> Version: 1 </div>
 
 <img src="./src/assets/git.gif" width="1080">
 
@@ -7,6 +7,9 @@
 <strong><h2>🎯 Sobre</h2></strong>
 
 <p>A proposta desse desenvolvimento consiste na implementação de um site que calcule de forma simples a rescisão trabalhista.</p>
+
+Obs: O projeto possuí alguns bugs, por isso se trata da versão 1.
+
 <hr/>
 <br>
  <strong><h2>🛠️ Tecnologias usadas</h2></strong>
