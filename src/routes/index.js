@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Calculator from '../pages/Calculator';
 import Result from '../pages/Result';
 import ResultDatails from '../pages/ResultDatails';
+import Error from '../pages/Error';
 
 import { StateMachineProvider, createStore } from 'little-state-machine';
 
@@ -59,8 +60,8 @@ export default function Routes() {
         <Route path="/calculator" component={Calculator} />
         <Route path="/result" component={Result} />
         <Route path="/resultDatails" component={ResultDatails} />
+        {/* <Route component={() => <Error />} /> */}
       </Router>
-      {/* <Route component={() => <Error />} /> */}
     </StateMachineProvider>
   );
 }
