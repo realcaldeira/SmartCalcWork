@@ -29,6 +29,9 @@ import { useStateMachine } from 'little-state-machine';
 
 import { updateData } from '../../routes';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Calculator(props) {
   const { actions } = useStateMachine({ updateData });
 
@@ -39,17 +42,25 @@ export default function Calculator(props) {
   } = useForm();
 
   function onSubmit(data) {
-    actions.updateData({
-      dataInicio: data.dataInicio,
-      dataTermino: data.dataTermino,
-      ultimoSalario: data.ultimoSalario,
-      numeroDependentes: data.numeroDependentes,
-      motivoTermino: data.motivoTermino,
-      feriasVen: data.feriasVen,
-      avisoPrev: data.avisoPrev,
-    });
+    const inicio = data.dataInicio;
+    const fim = data.dataTermino;
 
-    props.history.push('./result');
+    if (inicio > fim) {
+      toast.error('A data final precisa ser maior que a data inicial.');
+    } else if (data.motivoTermino === 'dispensaC') {
+    } else {
+      actions.updateData({
+        dataInicio: data.dataInicio,
+        dataTermino: data.dataTermino,
+        ultimoSalario: data.ultimoSalario,
+        numeroDependentes: data.numeroDependentes,
+        motivoTermino: data.motivoTermino,
+        feriasVen: data.feriasVen,
+        avisoPrev: data.avisoPrev,
+      });
+
+      props.history.push('./result');
+    }
   }
 
   const defaultOptions = {
@@ -75,6 +86,7 @@ export default function Calculator(props) {
       <BackgroundImage src={Background} />
 
       <ContainerContent>
+        <ToastContainer />
         <Title>Cálculo de Rescisão do Contrato de Trabalho</Title>
 
         <ContainerInput onSubmit={handleSubmit(onSubmit)}>
