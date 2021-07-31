@@ -4,14 +4,16 @@ export const Container = styled.div`
   flex: 1;
 
   flex-wrap: wrap;
+
+  @media (max-width: 610px) {
+    position: fixed;
+  }
 `;
 
 export const BackgroundImage = styled.img`
   position: fixed;
   width: 100%;
   height: 100%;
-  @media (max-width: 610px) {
-  }
 `;
 
 export const ContainerContent = styled.div`
@@ -20,10 +22,17 @@ export const ContainerContent = styled.div`
   justify-content: center;
   text-align: center;
   padding: 0 70px;
+
+  @media (max-width: 610px) {
+    padding: 0 170px;
+    width: 100%;
+    margin-top: 0vh;
+    font-size: 3vh;
+  }
 `;
 
 export const Title = styled.h1`
-  position: absolute;
+  position: fixed;
   font-size: 4vh;
   color: #fff;
   margin-top: 6.1vh;
@@ -31,7 +40,18 @@ export const Title = styled.h1`
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   @media (max-width: 610px) {
+    width: 100%;
+    margin-right: 90%;
+
     margin-top: 0vh;
+    font-size: 3vh;
+  }
+  @media (max-width: 375px) {
+    width: 100%;
+    margin-right: 80%;
+
+    margin-top: 0vh;
+    font-size: 3vh;
   }
 `;
 
@@ -75,6 +95,10 @@ export const Selection = styled.select`
   height: 4vh;
 
   border-radius: 1vh;
+  @media (max-width: 375px) {
+    width: 40vh;
+    height: 4vh;
+  }
 `;
 
 export const Option = styled.option`
@@ -162,8 +186,12 @@ export const InputButton = styled.input.attrs({ type: 'submit' })`
   }
 
   @media (max-width: 610px) {
-    position: fixed;
+    position: none;
+
     left: 0vh;
-    bottom: 10px;
+    margin-top: 0px;
+
+    width: 100%;
+    height: 7%;
   }
 `;

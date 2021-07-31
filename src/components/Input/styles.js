@@ -17,6 +17,11 @@ export const DataTitle = styled.h3`
   width: 200px;
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  @media (max-width: 610px) {
+    margin-top: 0px;
+    font-size: 2vh;
+  }
 `;
 
 export const DataInput = styled.input`
@@ -47,5 +52,12 @@ export const DataInput = styled.input`
     padding: 0.5vh;
 
     box-shadow: 0px 4px 4px rgba(1, 0, 0, 0.25);
+  }
+  @media (max-width: 610px) {
+    margin: -25px 0 5px 0;
+  }
+  @media (max-width: 375px) {
+    width: 40vh;
+    height: 4vh;
   }
 `;
