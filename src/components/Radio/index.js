@@ -5,7 +5,9 @@ import { OptionsRadio, Title, FériasVencidas, Radios } from './styles';
 export function Radio({ title, ...rest }) {
   return (
     <OptionsRadio {...rest}>
-      <Title>{title}</Title>
+      <div>
+        <Title>{title}</Title>
+      </div>
       <FériasVencidas {...rest}>
         <Radios name="Dev" type="radio" value="No" title="No" {...rest} />
         <Title>NÃO</Title>

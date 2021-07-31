@@ -6,11 +6,15 @@ export const Container = styled.div`
 
   justify-content: space-between;
   align-items: center;
+
+  flex-wrap: wrap;
 `;
 
 export const DataTitle = styled.h3`
   font-size: 2.6vh;
   color: #fff;
+
+  width: 200px;
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;

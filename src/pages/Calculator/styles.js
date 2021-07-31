@@ -7,15 +7,19 @@ export const Container = styled.div`
 `;
 
 export const BackgroundImage = styled.img`
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
+  @media (max-width: 610px) {
+  }
 `;
 
 export const ContainerContent = styled.div`
   display: flex;
 
   justify-content: center;
+  text-align: center;
+  padding: 0 70px;
 `;
 
 export const Title = styled.h1`
@@ -25,6 +29,10 @@ export const Title = styled.h1`
   margin-top: 6.1vh;
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  @media (max-width: 610px) {
+    margin-top: 0vh;
+  }
 `;
 
 export const ContainerInput = styled.form`
@@ -32,16 +40,27 @@ export const ContainerInput = styled.form`
   position: absolute;
 
   left: 11vh;
+
+  @media (max-width: 610px) {
+    left: 0;
+    padding: 8%;
+
+    margin-top: 10vh;
+  }
 `;
 
 export const Data = styled.div`
   justify-content: space-between;
   width: 100%;
+
+  text-align: start;
 `;
 export const Options = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  flex-wrap: wrap;
 `;
 
 export const Select = styled.select`
@@ -73,6 +92,8 @@ export const LabelOptions = styled.h3`
   font-size: 2.6vh;
   color: #fff;
 
+  width: 200px;
+
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
@@ -82,13 +103,14 @@ export const LottieContainer = styled.div`
   top: 18vh;
   right: 9.5vh;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1200px) {
     right: 35vh;
+    visibility: hidden;
   }
   @media (max-width: 700px) {
     right: 18vh;
   }
-  @media (max-width: 480px) {
+  @media (max-width: 610px) {
     right: 4vh;
   }
 `;
@@ -137,5 +159,11 @@ export const InputButton = styled.input.attrs({ type: 'submit' })`
     -moz-transition: all ease-in 0.3s;
     -ms-transition: all ease-in 0.3s;
     -o-transition: all ease-in 0.3s;
+  }
+
+  @media (max-width: 610px) {
+    position: fixed;
+    left: 0vh;
+    bottom: 10px;
   }
 `;

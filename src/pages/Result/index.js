@@ -87,6 +87,14 @@ export default function Result(props) {
       .splice(0, 3)
       .join('');
 
+    const ref = dataTermino
+      .replace('-', '')
+      .replace('-', '')
+      .split('')
+      .splice(6, 8)
+      .join('');
+    setRef(ref);
+
     if (
       motivoTermino === 'pedido' &&
       feriasVen === 'No' &&
@@ -134,7 +142,7 @@ export default function Result(props) {
       setTotal(totais);
 
       setRestCash(restCash);
-      setRef(restDays);
+
       setSaldoDeSalario(+ultimoSalario);
       setDecimoTerceiroProporcional(decimoTerceiroProporcional);
       setInssSalario(inssSalario);
@@ -200,7 +208,7 @@ export default function Result(props) {
       const totais = (soma - sub).toFixed(2);
 
       setRestCash(restCash);
-      setRef(restDays);
+
       setSaldoDeSalario(+ultimoSalario);
       setDecimoTerceiroProporcional(decimoTerceiroProporcional);
       setInssSalario(inssSalario);
@@ -277,7 +285,7 @@ export default function Result(props) {
       setTotal(totais);
 
       setRestCash(restCash);
-      setRef(restDays);
+
       setSaldoDeSalario(+ultimoSalario);
       setDecimoTerceiroProporcional(decimoTerceiroProporcional);
       setInssSalario(inssSalario);
@@ -353,7 +361,7 @@ export default function Result(props) {
       const totais = soma - sub;
 
       setRestCash(restCash);
-      setRef(restDays);
+
       setSaldoDeSalario('');
       setSaldoDeSalarioProvento(+ultimoSalario);
       setDecimoTerceiroProporcional(decimoTerceiroProporcional);
@@ -436,7 +444,6 @@ export default function Result(props) {
       const outroTotal = (restCash + +ultimoSalario).toFixed(2);
 
       setRestCash(outroTotal);
-      setRef(restDays);
       setSaldoDeSalario('');
       setSaldoDeSalarioProvento('');
       setDecimoTerceiroProporcional(decimoTerceiroProporcional);

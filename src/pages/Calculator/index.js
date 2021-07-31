@@ -47,7 +47,6 @@ export default function Calculator(props) {
 
     if (inicio > fim) {
       toast.error('A data final precisa ser maior que a data inicial.');
-    } else if (data.motivoTermino === 'dispensaC') {
     } else {
       actions.updateData({
         dataInicio: data.dataInicio,
@@ -123,11 +122,15 @@ export default function Calculator(props) {
             )}
 
             <Options>
-              <LabelOptions>Motivo do término de contrato</LabelOptions>
-              <Select
-                {...register('terminoContrato')}
-                {...register('motivoTermino')}
-              />
+              <div>
+                <LabelOptions>Motivo do término de contrato</LabelOptions>
+              </div>
+              <div>
+                <Select
+                  {...register('terminoContrato')}
+                  {...register('motivoTermino')}
+                />
+              </div>
             </Options>
             <Radio
               title="Você possui férias vencidas?"
