@@ -29,7 +29,7 @@ export default function ResultDatails() {
     state.dataResults.decimoTerceiroProporcional;
   const soma = state.dataResults.soma;
   const sub = state.dataResults.sub;
-  const total = state.dataResults.total;
+  // const total = state.dataResults.total;
 
   console.log(saldoDeSalario);
   return (

@@ -61,7 +61,7 @@ export default function Result(props) {
     const dataInicio = state.data.dataInicio;
     const dataTermino = state.data.dataTermino;
     const ultimoSalario = state.data.ultimoSalario;
-    const numeroDependentes = state.data.numeroDependentes;
+    // const numeroDependentes = state.data.numeroDependentes;
     const motivoTermino = state.data.motivoTermino;
     const feriasVen = state.data.feriasVen;
     const avisoPrev = state.data.avisoPrev;
@@ -71,11 +71,6 @@ export default function Result(props) {
 
     const DateInitialFormatted = DateInitial.split('').splice(0, 6).join('');
     const DateFinalFormatted = DateFinal.split('').splice(0, 6).join('');
-
-    const DateInitialYearFormatted = DateInitial.split('')
-      .splice(0, 4)
-      .join('');
-    const DateFinalYearFormatted = DateFinal.split('').splice(0, 4).join('');
 
     const DateMothTotal = DateFinalFormatted - DateInitialFormatted;
 
@@ -118,8 +113,10 @@ export default function Result(props) {
 
       const decimoTerceiroProporcional = +(
         (ultimoSalario / 12) *
-        [DateMothTotal ? 0 : 1]
+        [DateMothTotal ? 1 : 0]
       ).toFixed(2);
+      console.log(DateMothTotal);
+      console.log(decimoTerceiroProporcional);
       const fgts = +(
         (8 % (DateMothTotal * Number(ultimoSalario))) *
         100
@@ -151,6 +148,7 @@ export default function Result(props) {
       setSub(sub);
 
       console.log('Férias Vencidas PRECISA SER FEITA');
+      console.log('inssDecimo', inssDecimo);
       console.log('1/3 Férias PRECISA SER FEITA');
 
       console.log('***********************');

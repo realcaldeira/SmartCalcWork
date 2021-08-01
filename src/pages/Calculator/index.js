@@ -80,6 +80,7 @@ export default function Calculator(props) {
       </Selection>
     </>
   ));
+
   return (
     <Container>
       <BackgroundImage src={Background} />
