@@ -25,6 +25,8 @@ export const ContainerDatails = styled.div`
   width: 100%;
   top: 25%;
   left: 5%;
+
+  flex-wrap: wrap;
 `;
 export const Box = styled.div`
   width: 15%;
@@ -36,7 +38,11 @@ export const Box = styled.div`
   text-align: center;
 `;
 
-export const Title = styled.h3``;
+export const Title = styled.h3`
+  @media (max-width: 620px) {
+    font-size: 14px;
+  }
+`;
 
 export const TitleDatails = styled.h4`
   color: #4a00e0;
@@ -44,6 +50,10 @@ export const TitleDatails = styled.h4`
   font-size: 105%;
 
   margin-top: -5%;
+
+  @media (max-width: 620px) {
+    font-size: 12px;
+  }
 
   /* border-bottom-style: dotted;
   border-bottom-width: 0.5px;

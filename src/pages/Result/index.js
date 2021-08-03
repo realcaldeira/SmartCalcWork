@@ -503,7 +503,7 @@ export default function Result(props) {
           O valor líquido (depois dos descontos) da sua rescisão é de:
         </Title>
         <ResultTotal>R$ {[total ? total : 'NÃO EXISTE']}</ResultTotal>
-
+      
         <ButtonDetails onClick={onSubmit}>
           <ButtonTitle>Ver mais detalhes</ButtonTitle>
         </ButtonDetails>

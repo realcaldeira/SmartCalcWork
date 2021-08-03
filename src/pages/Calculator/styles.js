@@ -4,10 +4,6 @@ export const Container = styled.div`
   flex: 1;
 
   flex-wrap: wrap;
-
-  @media (max-width: 610px) {
-    position: fixed;
-  }
 `;
 
 export const BackgroundImage = styled.img`

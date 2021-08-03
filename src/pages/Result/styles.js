@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   flex: 1;
@@ -11,20 +10,24 @@ export const BackgroundImage = styled.img`
   height: 100%;
 `;
 
-export const TitleResultado = styled.h3`
+export const ContainerDatails = styled.div`
   position: fixed;
-  top: -4%;
+  width: 100%;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
   left: 5%;
 
-  font-size: 64px;
-  color: white;
+  flex-wrap: wrap;
 `;
 
-export const ContainerDatails = styled.div`
-  position: absolute;
-
-  top: 30%;
+export const TitleResultado = styled.h3`
   left: 5%;
+  flex-direction: column;
+  font-size: 64px;
+  color: white;
 `;
 
 export const Title = styled.h2`
@@ -32,7 +35,6 @@ export const Title = styled.h2`
   font-size: 5vh;
 `;
 export const ResultTotal = styled.h2`
-  position: fixed;
   color: #4a00e0;
 
   font-size: 9vh;
@@ -41,9 +43,7 @@ export const ResultTotal = styled.h2`
   top: 40%;
 `;
 
-export const ButtonDetails = styled(Link)`
-  position: fixed;
-  top: 70%;
+export const ButtonDetails = styled.button`
   left: 25.5%;
 
   width: 40vh;
@@ -83,7 +83,7 @@ export const ButtonDetails = styled(Link)`
 export const ButtonTitle = styled.h2`
   font-weight: bold;
   margin: 10px;
-  color: #ffffff;
+  color: #fff;
 `;
 
 export const ContainerLottie = styled.div`
@@ -91,4 +91,8 @@ export const ContainerLottie = styled.div`
 
   left: 55%;
   bottom: -4%;
+
+  @media (max-width: 1000px) {
+    visibility: hidden;
+  }
 `;
