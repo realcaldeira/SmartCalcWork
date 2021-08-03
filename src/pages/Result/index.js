@@ -61,7 +61,7 @@ export default function Result(props) {
     const dataInicio = state.data.dataInicio;
     const dataTermino = state.data.dataTermino;
     const ultimoSalario = state.data.ultimoSalario;
-    // const numeroDependentes = state.data.numeroDependentes;
+
     const motivoTermino = state.data.motivoTermino;
     const feriasVen = state.data.feriasVen;
     const avisoPrev = state.data.avisoPrev;
@@ -437,7 +437,7 @@ export default function Result(props) {
         +restCashAndVocationFormatted;
 
       const sub = +inssSalario + +inssDecimo;
-      const totais = soma - sub;
+      const totais = (soma - sub).toFixed(2);
 
       const outroTotal = (restCash + +ultimoSalario).toFixed(2);
 
@@ -503,7 +503,7 @@ export default function Result(props) {
           O valor líquido (depois dos descontos) da sua rescisão é de:
         </Title>
         <ResultTotal>R$ {[total ? total : 'NÃO EXISTE']}</ResultTotal>
-      
+
         <ButtonDetails onClick={onSubmit}>
           <ButtonTitle>Ver mais detalhes</ButtonTitle>
         </ButtonDetails>

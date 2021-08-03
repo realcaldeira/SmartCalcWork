@@ -15,16 +15,14 @@ export const ContainerDatails = styled.div`
   width: 100%;
   flex-direction: column;
 
-  justify-content: center;
   align-items: center;
-
-  left: 5%;
+  text-align: center;
 
   flex-wrap: wrap;
 `;
 
 export const TitleResultado = styled.h3`
-  left: 5%;
+  left: -15%;
   flex-direction: column;
   font-size: 64px;
   color: white;
@@ -89,7 +87,7 @@ export const ButtonTitle = styled.h2`
 export const ContainerLottie = styled.div`
   position: fixed;
 
-  left: 55%;
+  left: 10%;
   bottom: -4%;
 
   @media (max-width: 1000px) {
